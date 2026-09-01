@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mahadev Sangameshwar Kanthi | Network & Systems Engineer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-body: #f8fafc;
+      --bg-surface: #ffffff;
+      --bg-subtle: #f1f5f9;
+      --border: #e2e8f0;
+      --border-focus: #cbd5e1;
+      --text-main: #0f172a;
+      --text-muted: #64748b;
+      --text-soft: #94a3b8;
+      --primary: #0284c7;
+      --primary-hover: #0369a1;
+      --primary-light: #e0f2fe;
+      --primary-text: #0369a1;
+      --shadow-sm: 0 1px 3px 0 rgb(0 0 0 / 0.06);
+      --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.07), 0 2px 4px -2px rgb(0 0 0 / 0.07);
+      --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.08), 0 4px 6px -4px rgb(0 0 0 / 0.08);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: var(--bg-body);
+      color: var(--text-main);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .mono {
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    /* Navbar */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      z-index: 1000;
+      padding: 1.1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .nav-brand {
+      font-weight: 800;
+      font-size: 1.15rem;
+      color: var(--text-main);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      letter-spacing: -0.02em;
+    }
+
+    .nav-brand .status-dot {
+      width: 9px;
+      height: 9px;
+      background: #22c55e;
+      border-radius: 50%;
+      box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.2);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.92rem;
+      font-weight: 600;
+      transition: color 0.2s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--primary);
+    }
+
+    /* Container */
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 7rem 1.5rem 3rem;
+    }
+
+    section {
+      margin-bottom: 5.5rem;
+    }
+
+    .section-header {
+      margin-bottom: 2.25rem;
+    }
+
+    .section-header h2 {
+      font-size: 1.85rem;
+      font-weight: 800;
+      color: var(--text-main);
+      letter-spacing: -0.02em;
+    }
+
+    .section-header p {
+      color: var(--text-muted);
+      font-size: 1rem;
+      margin-top: 0.35rem;
+    }
+
+    /* Hero Section */
+    .hero {
+      padding: 2.5rem 0 2rem;
+      display: grid;
+      grid-template-columns: 1.25fr 0.95fr;
+      gap: 3.5rem;
+      align-items: center;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--primary-light);
+      color: var(--primary-text);
+      font-size: 0.82rem;
+      font-weight: 700;
+      padding: 0.4rem 0.9rem;
+      border-radius: 9999px;
+      margin-bottom: 1.25rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .hero-text h1 {
+      font-size: 2.75rem;
+      line-height: 1.2;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      color: var(--text-main);
+      margin-bottom: 0.75rem;
+    }
+
+    .hero-text .title {
+      font-size: 1.25rem;
+      color: var(--primary);
+      font-weight: 700;
+      margin-bottom: 1.25rem;
+    }
+
+    .hero-text p {
+      color: var(--text-muted);
+      font-size: 1.02rem;
+      line-height: 1.7;
+      margin-bottom: 1.25rem;
+    }
+
+    .cta-group {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .btn {
+      padding: 0.8rem 1.6rem;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: #ffffff;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .btn-primary:hover {
+      background: var(--primary-hover);
+      box-shadow: var(--shadow-md);
+      transform: translateY(-1px);
+    }
+
+    .btn-secondary {
+      background: var(--bg-surface);
+      color: var(--text-main);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--bg-subtle);
+      border-color: var(--border-focus);
+    }
+
+    /* Hero Summary Card */
+    .summary-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 2rem;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .summary-card h3 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 1.25rem;
+      color: var(--text-main);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .metric-row {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .metric-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 0.85rem;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.92rem;
+    }
+
+    .metric-item:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    .metric-label {
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    .metric-value {
+      font-weight: 700;
+      color: var(--text-main);
+    }
+
+    /* About Deep Dive Section */
+    .about-box {
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 2.25rem;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .about-box p {
+      color: var(--text-muted);
+      font-size: 1rem;
+      line-height: 1.75;
+      margin-bottom: 1.25rem;
+    }
+
+    .about-box p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* Skills Grid */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .skill-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.75rem;
+      transition: all 0.25s ease;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .skill-card:hover {
+      border-color: var(--primary);
+      box-shadow: var(--shadow-md);
+      transform: translateY(-2px);
+    }
+
+    .skill-card h3 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-bottom: 0.85rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .skill-card p {
+      font-size: 0.93rem;
+      color: var(--text-muted);
+      line-height: 1.65;
+    }
+
+    /* Projects List */
+    .projects-list {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    .project-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 2.25rem;
+      box-shadow: var(--shadow-sm);
+      transition: border-color 0.2s ease;
+    }
+
+    .project-card:hover {
+      border-color: var(--primary);
+    }
+
+    .project-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 1.25rem;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+
+    .project-header h3 {
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: var(--text-main);
+      letter-spacing: -0.01em;
+    }
+
+    .project-tag {
+      background: var(--bg-subtle);
+      color: var(--primary-text);
+      font-size: 0.82rem;
+      font-weight: 700;
+      padding: 0.35rem 0.85rem;
+      border-radius: 6px;
+      border: 1px solid var(--border);
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .project-bullets {
+      list-style-type: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .project-bullets li {
+      position: relative;
+      padding-left: 1.5rem;
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      line-height: 1.65;
+    }
+
+    .project-bullets li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: var(--primary);
+      font-weight: 800;
+      font-size: 1.3rem;
+      line-height: 1.2;
+    }
+
+    /* Certifications Grid */
+    .cert-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .cert-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem;
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      border-top: 4px solid var(--primary);
+    }
+
+    .cert-card h4 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-bottom: 0.4rem;
+    }
+
+    .cert-card span {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+    }
+
+    /* Footer & Contact */
+    footer {
+      background: var(--bg-surface);
+      border-top: 1px solid var(--border);
+      padding: 4rem 1.5rem 3rem;
+      text-align: center;
+    }
+
+    .contact-container {
+      max-width: 650px;
+      margin: 0 auto 3rem;
+    }
+
+    .contact-container h2 {
+      font-size: 2rem;
+      font-weight: 800;
+      margin-bottom: 0.6rem;
+      letter-spacing: -0.02em;
+    }
+
+    .contact-container p {
+      color: var(--text-muted);
+      font-size: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .contact-links {
+      display: flex;
+      justify-content: center;
+      gap: 1.25rem;
+      flex-wrap: wrap;
+    }
+
+    .contact-pill {
+      background: var(--bg-body);
+      border: 1px solid var(--border);
+      padding: 0.75rem 1.4rem;
+      border-radius: 8px;
+      font-size: 0.92rem;
+      font-weight: 600;
+      color: var(--text-main);
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+
+    .contact-pill:hover {
+      background: var(--primary);
+      color: #ffffff;
+      border-color: var(--primary);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .copyright {
+      font-size: 0.85rem;
+      color: var(--text-soft);
+      border-top: 1px solid var(--border);
+      padding-top: 2.25rem;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    @media (max-width: 850px) {
+      .hero {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+      }
+      .nav-links {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <nav>
+    <a href="#" class="nav-brand">
+      <span class="status-dot"></span>
+      Mahadev S. Kanthi
+    </a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#certifications">Certifications</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <div class="container">
+
+    <!-- Hero & Introduction Section -->
+    <section class="hero" id="about">
+      <div class="hero-text">
+        <div class="badge">Open to Network &amp; NOC Engineering Roles</div>
+        <h1>Hi, I’m Mahadev — Network &amp; Systems Engineer.</h1>
+        <div class="title">Enterprise Routing, Switching &amp; Linux Infrastructure</div>
+        
+        <p>
+          I design, configure, and maintain high-availability network infrastructures and Linux server environments. Rather than treating networking as pure theory, I specialize in hands-on lab deployments: architecting multi-area OSPF routing, preventing Layer 2 loops with Spanning Tree, enforcing strict perimeter security via ACLs and NAT, and managing resilient Linux systems.
+        </p>
+
+        <p>
+          With formal training across <strong>CCNA (200-301)</strong>, <strong>CCNP Enterprise (ENCOR 350-401)</strong>, and <strong>Linux System Administration</strong>, I bridge routing protocol logic with operating system administration to deliver high uptime and fast incident resolution.
+        </p>
+
+        <div class="cta-group">
+          <a href="#projects" class="btn btn-primary">Explore Lab Projects</a>
+          <a href="#contact" class="btn btn-secondary">Get In Touch</a>
+        </div>
+      </div>
+
+      <!-- Quick Snapshot Card -->
+      <div class="summary-card">
+        <h3>Profile Highlights <span>📌</span></h3>
+        <div class="metric-row">
+          <div class="metric-item">
+            <span class="metric-label">Location</span>
+            <span class="metric-value">Pune, Maharashtra</span>
+          </div>
+          <div class="metric-item">
+            <span class="metric-label">Core Focus</span>
+            <span class="metric-value">Cisco IOS, Routing &amp; Switching</span>
+          </div>
+          <div class="metric-item">
+            <span class="metric-label">Systems &amp; OS</span>
+            <span class="metric-value">RHEL, Ubuntu, Systemd</span>
+          </div>
+          <div class="metric-item">
+            <span class="metric-label">Lab Validations</span>
+            <span class="metric-value">50+ Enterprise Topologies</span>
+          </div>
+          <div class="metric-item">
+            <span class="metric-label">Education</span>
+            <span class="metric-value">BCA (Solapur University, 2026)</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Detailed About / Philosophy -->
+    <section>
+      <div class="section-header">
+        <h2>Engineering Background &amp; Philosophy</h2>
+        <p>How I approach network design, infrastructure stability, and systems administration.</p>
+      </div>
+      <div class="about-box">
+        <p>
+          My technical journey is grounded in continuous, practical configuration. Whether building multi-tier campus networks or deploying Linux server environments, my goal is always predictability, security, and performance. I focus heavily on structured addressing plans (VLSM/CIDR), fault-tolerant routing convergence (OSPF/EIGRP/BGP), and robust Layer 2 redundancy using EtherChannel and Rapid Spanning Tree.
+        </p>
+        <p>
+          On the systems side, I manage Linux environments with a focus on security and efficiency—configuring DNS, DHCP, FTP, NFS, and systemd services with hardened SSH access and granular firewall rules. I am actively seeking an entry-level or associate role as a <strong>Network Engineer</strong>, <strong>NOC Engineer</strong>, or <strong>Systems Support Engineer</strong> where I can contribute to mission-critical infrastructure.
+        </p>
+      </div>
+    </section>
+
+    <!-- Technical Skills Section -->
+    <section id="skills">
+      <div class="section-header">
+        <h2>Technical Competencies</h2>
+        <p>Core infrastructure technologies, routing protocols, and systems administration tools I manage.</p>
+      </div>
+
+      <div class="skills-grid">
+        <div class="skill-card">
+          <h3>⚡ Enterprise Routing &amp; Switching</h3>
+          <p>Configured and managed OSPFv2/OSPFv3 (Single &amp; Multi-Area), EIGRP, BGP Fundamentals, Static Routing, Route Redistribution, Route Summarization, Layer 2/3 Switching, VLANs, Inter-VLAN Routing (RoAS &amp; SVI), STP/RSTP/MST, EtherChannel (LACP/PAgP), and VTP.</p>
+        </div>
+
+        <div class="skill-card">
+          <h3>🐧 Linux Administration &amp; Core Services</h3>
+          <p>Administered RHEL and Ubuntu environments; managed User &amp; Group Accounts, File Permissions, Ownership, Linux ACLs, and Systemd Services; deployed and maintained DNS, DHCP, FTP/SFTP, TFTP, NFS Storage Shares, and Web Servers (Apache/Nginx).</p>
+        </div>
+
+        <div class="skill-card">
+          <h3>🛡️ Network Security &amp; Access Control</h3>
+          <p>Implemented and enforced Standard &amp; Extended Cisco ACLs, Linux Firewalls, Stateful NAT/PAT, Switch Port Security, DHCP Snooping, Dynamic ARP Inspection (DAI), and IPsec VPN Fundamentals.</p>
+        </div>
+
+        <div class="skill-card">
+          <h3>🔍 Diagnostics, Analysis &amp; Operations</h3>
+          <p>Conducted Wireshark Deep Packet Inspection, Network Troubleshooting, Subnetting (FLSM/VLSM, CIDR), Device Hardening, Password Recovery, and Configuration Backup/Restore across Cisco IOS/IOS-XE platforms.</p>
+        </div>
+
+        <div class="skill-card">
+          <h3>🛠️ Lab Emulators &amp; Software</h3>
+          <p>Deployed and tested virtual topologies via GNS3, EVE-NG, and Cisco Packet Tracer; managed Docker Fundamentals; developed with C#, ASP.NET Core MVC, and managed SQL Server databases.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Hands-On Projects Section -->
+    <section id="projects">
+      <div class="section-header">
+        <h2>Practical Projects &amp; Lab Implementations</h2>
+        <p>Proven configurations designed, tested, and verified across enterprise network topologies and Linux servers.</p>
+      </div>
+
+      <div class="projects-list">
+        <div class="project-card">
+          <div class="project-header">
+            <h3>Enterprise Multi-Area OSPF &amp; Scalable Campus Network</h3>
+            <span class="project-tag">Cisco IOS • GNS3 • Packet Tracer</span>
+          </div>
+          <ul class="project-bullets">
+            <li>Designed a hierarchical 3-tier campus network (Core, Distribution, Access) connecting multiple branch offices.</li>
+            <li>Configured Multi-Area OSPF (Backbone Area 0 and standard areas) with point-to-point links, MD5 authentication, and route summarization to reduce routing table overhead.</li>
+            <li>Implemented Layer 2 loop prevention and link aggregation using Rapid Per-VLAN Spanning Tree (RPVST+) and multi-chassis LACP EtherChannel trunks.</li>
+            <li>Verified end-to-end routing failover, convergence times, and neighbor relationships using Cisco IOS diagnostic commands.</li>
+          </ul>
+        </div>
+
+        <div class="project-card">
+          <div class="project-header">
+            <h3>Enterprise Network Hardening, NAT &amp; Perimeter Security</h3>
+            <span class="project-tag">Security Hardening • Cisco IOS</span>
+          </div>
+          <ul class="project-bullets">
+            <li>Deployed Standard and Extended Named ACLs to enforce strict traffic filtering and isolate departmental VLANs from sensitive management subnets.</li>
+            <li>Configured Dynamic NAT with PAT (Port Address Translation) overload to securely map internal private IP subnets to public ISP interfaces.</li>
+            <li>Hardened Cisco switch access layer using Port Security (Sticky MAC and maximum violation shutdown), BPDU Guard, and Root Guard.</li>
+            <li>Enforced encrypted management protocols by replacing Telnet with SSHv2 and configured AAA local user privilege levels.</li>
+          </ul>
+        </div>
+
+        <div class="project-card">
+          <div class="project-header">
+            <h3>Linux Infrastructure Services &amp; Network Server Deployment</h3>
+            <span class="project-tag">Linux • RHEL / Ubuntu • Systemd</span>
+          </div>
+          <ul class="project-bullets">
+            <li>Deployed and configured a dedicated Linux server environment hosting core network infrastructure services including ISC-DHCP, BIND DNS, and Apache/Nginx web servers.</li>
+            <li>Implemented host-level security using iptables/ufw firewalls, configuring stateful rules to permit authorized management traffic and block unauthorized ports.</li>
+            <li>Configured secure remote management via SSH key-pair authentication, disabled root login, and automated service monitoring using custom systemd unit files.</li>
+            <li>Conducted packet capture and analysis using tcpdump and Wireshark to troubleshoot DNS resolution delays and DHCP lease distribution issues.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Certifications Section -->
+    <section id="certifications">
+      <div class="section-header">
+        <h2>Certifications &amp; Technical Training</h2>
+        <p>Verified technical training and industry job simulation credentials.</p>
+      </div>
+
+      <div class="cert-grid">
+        <div class="cert-card">
+          <h4>CCNP Enterprise (ENCOR 350-401)</h4>
+          <span>Shreevidya Infotechnologies (2026)</span>
+        </div>
+        <div class="cert-card">
+          <h4>CCNA (200-301) Training</h4>
+          <span>Shreevidya Infotechnologies (2024)</span>
+        </div>
+        <div class="cert-card">
+          <h4>Linux System Administration</h4>
+          <span>SevenMentor (2026)</span>
+        </div>
+        <div class="cert-card">
+          <h4>Mastercard Cyber Simulation</h4>
+          <span>Forage (2026)</span>
+        </div>
+        <div class="cert-card">
+          <h4>Tata Cybersecurity Analyst</h4>
+          <span>Forage (2026)</span>
+        </div>
+        <div class="cert-card">
+          <h4>Deloitte Cyber Job Simulation</h4>
+          <span>Forage (2025)</span>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- Contact Section & Footer -->
+  <footer id="contact">
+    <div class="contact-container">
+      <h2>Let's Discuss Infrastructure</h2>
+      <p>Whether you have an opening for a Network / NOC Engineer or want to discuss enterprise network designs, feel free to reach out.</p>
+      
+      <div class="contact-links">
+        <a href="mailto:mahadev010506@gmail.com" class="contact-pill">📧 mahadev010506@gmail.com</a>
+        <a href="tel:+917822002380" class="contact-pill">📞 +91 7822002380</a>
+        <a href="https://www.linkedin.com/in/mahadev-kanthi-231731221" target="_blank" class="contact-pill">🔗 LinkedIn Profile</a>
+        <a href="https://portmahadev.netlify.app/" target="_blank" class="contact-pill">🌐 Live Portfolio</a>
+      </div>
+    </div>
+
+    <div class="copyright">
+      &copy; 2026 Mahadev Sangameshwar Kanthi • Designed for high readability, reliability, and performance.
+    </div>
+  </footer>
+
+</body>
+</html>
